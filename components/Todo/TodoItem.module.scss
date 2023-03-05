@@ -1,0 +1,26 @@
+.todo-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    &__text{
+        font-size: 18px;
+        color: #333;
+        &--completed{
+            text-decoration: line-through;
+            color: #999;
+        }
+    }
+    &__actions{
+        display: flex;
+        align-items: center;
+        .todo-item__action{
+            margin-left: 10px;
+            cursor: pointer;
+            &:hover{
+                color: #333;
+            }
+        }
+    }
+}
