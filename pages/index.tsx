@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import {Inter} from 'next/font/google'
 import TodoItem from "@/components/Todo/TodoItem";
-import TodoList from "@/components/Todo/TodoList";
+import TodoList, {API_URL} from "@/components/Todo/TodoList";
 import styles from "./index.module.scss"
 import {TodoItemModel} from "@/models/TodoItem";
 import {useEffect, useRef, useState} from "react";
@@ -43,7 +43,7 @@ export default function Home(props: { todoList: TodoItemModel[] }) {
 
 const getTodoList = async (): Promise<TodoItemModel[]> => {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/items");
+        const response = await fetch(`${API_URL}items/`);
         if (response.ok) {
             return await response.json();
         }

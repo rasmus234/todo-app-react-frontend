@@ -10,6 +10,7 @@ interface OwnProps {
 
 type Props = OwnProps;
 
+export const API_URL = "http://127.0.0.1/api/";
 
 const TodoList: FunctionComponent<Props> = (props) => {
 
@@ -67,7 +68,7 @@ const TodoList: FunctionComponent<Props> = (props) => {
 };
 
 async function deleteTodoItem(id: number): Promise<boolean> {
-    const response = await fetch("http://127.0.0.1:8000/api/items/" + id, {
+    const response = await fetch(`${API_URL}items/` + id, {
         method: "DELETE",
     });
     return response.ok;
@@ -75,7 +76,7 @@ async function deleteTodoItem(id: number): Promise<boolean> {
 }
 
 async function updateTodoItem(todoItem: TodoItemModel): Promise<boolean> {
-    const response = await fetch("http://127.0.0.1:8000/api/items/" + todoItem.id, {
+    const response = await fetch(`${API_URL}items/` + todoItem.id, {
         method: "PUT",
         body: JSON.stringify(todoItem),
         headers: {
@@ -86,7 +87,7 @@ async function updateTodoItem(todoItem: TodoItemModel): Promise<boolean> {
 }
 
 async function createTodoItem(name: string): Promise<TodoItemModel | null> {
-    const response = await fetch("http://127.0.0.1:8000/api/items", {
+    const response = await fetch(`${API_URL}items`, {
         method: "POST",
         body: JSON.stringify({name: name}),
         headers: {
